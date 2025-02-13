@@ -139,3 +139,14 @@ rule Extract_common_candidates:
         """
         awk 'FNR==NR {a[$1]++; next} {a[$1]++} END {for (i in a) if (a[i] >= 2) print i}' {input.Phobius_candidate} {input.signalP_candidate} {input.Predisi_candidate} > {output.common_candidates}
         """
+
+rule Phytocytokine_sequence_extraction:
+    input:
+        common_candidates=f"results/{ref_basename}_phytocytokine.txt",
+        pep_file=f"{ref_basename}_shortpep_NoTM.fasta"
+    output:
+        f"results/{ref_basename}_phytocytokine.fasta"
+    shell:
+        """
+        seqkit grep -f {input.common_candidates} {input.pep_file} 1> {output}
+        """
