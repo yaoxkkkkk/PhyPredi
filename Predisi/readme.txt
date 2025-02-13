@@ -1,3 +1,11 @@
+Website of Predisi: http://predisi.de/
+
+The compiled Predisi can be used on local computer or HPC cluster.
+
+USAGE: java -cp ${Predisi_folder} JSPP ${Predisi_folder}/matrices/eukarya.smx sequences.fasta result.txt
+
+################################### Original readme file ###################################
+
 The position weight matrices are stored as Java objects and can be opened by using the ObjectInputStream class of Java. 
 The following code shows a simple implementation of the JSPP package.
 
