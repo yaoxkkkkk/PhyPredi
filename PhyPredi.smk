@@ -1,6 +1,6 @@
 import os
 
-configfile: "PhytoPredi_config.yaml"
+configfile: "PhyPredi_config.yaml"
 
 ref_basename=os.path.splitext(os.path.basename(config["pep_file"]))[0]
 
@@ -101,14 +101,14 @@ rule Prediction_Predisi:
         pep_file=f"{ref_basename}_shortpep_NoTM.fasta"
     output:
         f"results/Predisi/{ref_basename}_Predisi.txt"
-    conda:
-        config["conda_env"]
+    params:
+        predisi_folder=config["predisi_folder"]
     log:
         "logs/Prediction_Predisi.log"
     shell:
         """
-        java -cp {config["predisi_path"]} \
-        JSPP {config["predisi_path"]}/matrices/eukarya.smx {input} {output} \
+        java -cp {params.predisi_folder} \
+        JSPP {params.predisi_folder}/matrices/eukarya.smx {input} {output} \
         2> {log}
         """
 
