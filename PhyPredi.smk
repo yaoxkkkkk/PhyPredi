@@ -14,7 +14,7 @@ rule file_treatment:
     output:
         temp(f"{ref_basename}_treated.fasta")
     log:
-        f"logs/{ref_basename}_file_treatment.log"
+        "logs/file_treatment.log"
     shell:
         r"""
         seqkit replace \
