@@ -6,7 +6,8 @@ ref_basename=os.path.splitext(os.path.basename(config["pep_file"]))[0]
 
 rule all:
     input:
-        f"results/{ref_basename}_phytocytokine.txt"
+        f"results/{ref_basename}_phytocytokine.txt",
+        f"results/{ref_basename}_phytocytokine.fasta"
 
 rule file_treatment:
     input:
@@ -65,7 +66,7 @@ rule NoTM_shortpep_extraction:
         pep_file=f"{ref_basename}_shortpep.fasta",
         Phobius_file=f"results/Phobius/{ref_basename}_Phobius.txt"
     output:
-        NoTM_shortpep_list=f"{ref_basename}_shortpep_NoTM.list",
+        NoTM_shortpep_list=temp(f"{ref_basename}_shortpep_NoTM.list"),
         NoTM_shortpep_file=f"{ref_basename}_shortpep_NoTM.fasta"
     shell:
         """
@@ -123,9 +124,9 @@ rule Phytocytokine_candidate_extraction:
         Predisi_candidate=f"results/Predisi/{ref_basename}_Predisi_candidate.txt"
     shell:
         """
-        awk -F "\t" '$3 == "Y" {print $1}' {input.Phobius_file} > {output.Phobius_candidate}
-        awk -F "\t" '$3 == "signal_peptide" {print $1}' {input.signalP_file} > {output.signalP_candidate}
-        awk -F "\t" '$3 == "Y" {print $1}' {input.Predisi_file} > {output.Predisi_candidate}
+        awk -F "\\t" '$3 == "Y" {{print $1}}' {input.Phobius_file} > {output.Phobius_candidate}
+        awk -F "\\t" '$3 == "signal_peptide" {{print $1}}' {input.signalP_file} > {output.signalP_candidate}
+        awk -F "\\t" '$3 == "Y" {{print $1}}' {input.Predisi_file} > {output.Predisi_candidate}
         """
 
 rule Extract_common_candidates:
@@ -137,7 +138,7 @@ rule Extract_common_candidates:
         common_candidates=f"results/{ref_basename}_phytocytokine.txt"
     shell:
         """
-        awk 'FNR==NR {a[$1]++; next} {a[$1]++} END {for (i in a) if (a[i] >= 2) print i}' {input.Phobius_candidate} {input.signalP_candidate} {input.Predisi_candidate} > {output.common_candidates}
+        awk 'FNR==NR {{a[$1]++; next}} {{a[$1]++}} END {{for (i in a) if (a[i] >= 2) print i}}' {input.Phobius_candidate} {input.signalP_candidate} {input.Predisi_candidate} > {output.common_candidates}
         """
 
 rule Phytocytokine_sequence_extraction:
