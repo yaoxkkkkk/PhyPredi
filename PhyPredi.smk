@@ -82,7 +82,7 @@ rule Prediction_signalP:
     params:
         "results/signalP/"
     conda:
-        config["conda_env"]
+        config["conda_env"]["signalP"]
     log:
         "logs/Prediction_signalP.log"
     shell:

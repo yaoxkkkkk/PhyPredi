@@ -1,7 +1,9 @@
 pep_file: ""
-Primary_transcript_only: Yes
+
 max_length: 200
 
 # software configuration
 predisi_folder: ""
-conda_env: ""
+
+conda_env:
+  signalP_env: ""
