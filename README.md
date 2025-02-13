@@ -1,4 +1,4 @@
-<img src="https://github.com/user-attachments/assets/c1778e95-639c-494f-8550-552cde5c5a8e" alt="pipeline" width="200" height="225">
+<img src="https://github.com/user-attachments/assets/c1778e95-639c-494f-8550-552cde5c5a8e" alt="pipeline" width="300" height="337.5">
 
 ## 1. Dependent Software
 
