@@ -1,0 +1,7 @@
+pep_file: ""
+Primary_transcript_only: Yes
+max_length: 200
+
+# software configuration
+predisi_folder: "/dssg/home/acct-qfgao/qfgao/Biotools/jspp"
+conda_env: "phytocytokine"
