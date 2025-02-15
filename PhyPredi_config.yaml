@@ -1,9 +1,18 @@
-pep_file: ""
+protein_file: ""
 
+# Or
+genome_file: ""
+
+annotation_file: ""
+
+# Length filter
 max_length: 200
 
-# software configuration
+# Software configuration
 predisi_folder: ""
+
+singularity: 
+  AGAT_image: ""
 
 conda_env:
   signalP_env: ""
