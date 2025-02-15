@@ -10,7 +10,10 @@
 
 ## 2. What to input
 
-- Protein sequence fasta file (primary transcripts only)
+- When primary transcripts only protein sequence fasta file provided, add protein file.
+- When primary transcripts only file are not provided, add genome file and annotation file.
+
+gzipped files are supported.
 
 ## 3. What to output
 
@@ -23,6 +26,7 @@
 snakemake \
 	--snakefile PhyPredi.smk \
 	--use-conda \
+	--use-singularity \
 	--rerun-incomplete \
 	--nolock
 ```
