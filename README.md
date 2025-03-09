@@ -10,7 +10,7 @@
 
 ## 2. What to input
 
-- If only the primary transcript's protein sequence FASTA file is provided, add the protein file.
+- If the primary transcript's protein sequence FASTA file is provided, add the protein file.
 - If the primary transcript's protein sequence FASTA file is not provided, add the genome file and the annotation file.
 
 gzipped files are supported.
